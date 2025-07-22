@@ -21,7 +21,7 @@ export async function POST(request) {
     if (userIsExisted) {
         return NextResponse.json({
             message: "user already exites"
-        }, { status: 401 })
+        }, { status: 200 })
     }
 
     const user = await User.create({

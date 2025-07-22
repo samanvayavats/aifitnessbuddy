@@ -4,7 +4,7 @@ import SessionWrapper from "./component/sessionWrapper";
 import Navbar from "@/components/layout/navbar";
 import Footer from "@/components/layout/footer";
 
-// Font setup
+// Font configuration
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -27,16 +27,17 @@ export default function RootLayout({ children }) {
     <html lang="en" className="h-full">
       <body
         suppressHydrationWarning
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen w-full bg-slate-950`}
+        className={`${geistSans.variable} ${geistMono.variable} `}
       >
         <SessionWrapper>
-          {/* Site-wide Navigation */}
+          {/* Navbar: Visible on all pages */}
           <Navbar />
 
-          {/* Main Page Content */}
-          <main className="pt-16 px-4 sm:px-6 lg:px-8">
+          {/* Main Content Area */}
+          <main className="pt-16 ">
             {children}
           </main>
+
 
           {/* Footer */}
           <Footer />
