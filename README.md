@@ -56,7 +56,7 @@ contact.model.js → Contact schema
 
 - [x] User registration and login
 - [x] AI-generated workout & diet plans
-- [X] Save and view history (coming soon)
+- [X] Save and view history 
 
 
 ---
