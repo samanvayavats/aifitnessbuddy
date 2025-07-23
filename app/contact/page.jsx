@@ -2,10 +2,10 @@
 
 import axios from 'axios';
 import React, { useState } from 'react';
-
+import { useSession ,signIn } from 'next-auth/react';
 
 export default function page() {
-
+  const {data : session} = useSession()
 
   const [formData, setFormData] = useState({
 
@@ -24,7 +24,7 @@ export default function page() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-   
+
 
     try {
       const res = axios.post('api/contact', {
@@ -36,20 +36,36 @@ export default function page() {
     }
     finally {
       setFormData({ name: '', email: '', message: '' });
-      
+
     }
 
 
   };
 
+      if (!session) {
+        return (
+          <div className="p-6 min-h-screen flex flex-col items-center justify-center">
+            <h1 className="text-2xl font-bold mb-4">Login Required</h1>
+            <button
+              onClick={() => signIn('google')}
+              className="bg-black text-white px-4 py-2 rounded"
+            >
+              Login with Google
+            </button>
+          </div>
+        );
+      }
+
   return (
+
+
     <div className="min-h-screen w-full bg-gradient-to-b from-rose-100 to-pink-200 flex items-center justify-center px-6">
       <div className="w-full max-w-2xl bg-white/80 backdrop-blur-md rounded-3xl shadow-xl p-10 border border-pink-300">
         <h1 className="text-3xl md:text-4xl font-bold text-pink-700 text-center mb-6">
           Contact Us
         </h1>
 
-      
+
         <form onSubmit={handleSubmit} className="space-y-6">
           <input
             type="text"

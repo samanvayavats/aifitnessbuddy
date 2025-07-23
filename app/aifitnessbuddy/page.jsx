@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useSession, signIn } from 'next-auth/react';
 import ReactMarkdown from 'react-markdown';
-
+import { MdCancel } from "react-icons/md";
 
 export default function Page() {
   const { data: session, status } = useSession();
@@ -14,11 +14,11 @@ export default function Page() {
   const [history, setHistory] = useState([]);
   const [isUpload, setIsUpload] = useState(false);
 
- 
+
   useEffect(() => {
-   
+
     if (status === 'authenticated' && session?.user?.email) {
-  
+
       fetchHistory(session.user.email);
     }
   }, [session, status]);
@@ -85,59 +85,71 @@ export default function Page() {
   return (
     <div className='w-full h-full bg-pink-200 min-h-full'>
       <div className="p-6 max-w-xl mx-auto font-mono ">
-      <h1 className="text-2xl font-bold mb-4">💪 Talk to Your AI Fitness Buddy</h1>
+        <h1 className="text-2xl font-bold mb-4">💪 Talk to Your AI Fitness Buddy</h1>
 
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <textarea
-          placeholder="How was your workout today? Or ask something..."
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          className="w-full border px-4 py-2 rounded"
-          rows={4}
-          required
-        />
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <textarea
+            placeholder="How was your workout today? Or ask something..."
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            className="w-full border px-4 py-2 rounded"
+            rows={4}
+            required
+          />
 
-        <input
-          type="file"
-          onChange={(e) => setFile(e.target.files[0])}
-          className="w-full"
-        />
+          <div className=' flex '>
+            <input
+              type="file"
+              onChange={(e) => setFile(e.target.files[0])}
+              className="w-full"
+            />
+            <div onClick={()=>(setFile(null))}>
+              <MdCancel size={26}  className='text-pink-600'/>
+            </div>
+          </div>
 
-        <button
-          disabled={isUpload}
-          type="submit"
-          className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700"
-        >
-          {isUpload ? '⏳ Waiting for AI response...' : '🚀 Send to AI'}
-        </button>
-      </form>
+          {
+            file &&
+            <img src={URL.createObjectURL(file)}
+              className='h-20 w-20'
+              alt="No image to show" />
+          }
 
-      {message && <p className="mt-4 text-green-600">{message}</p>}
+          <button
+            disabled={isUpload}
+            type="submit"
+            className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700"
+          >
+            {isUpload ? '⏳ Waiting for AI response...' : '🚀 Send to AI'}
+          </button>
+        </form>
 
-      <div className="mt-8">
-        <h2 className="text-xl font-semibold mb-2">📜 Conversation History</h2>
-        {history.length === 0 ? (
-          <p className="text-gray-500">No history yet.</p>
-        ) : (
-          <ul className="space-y-4">
-            {history.map((item, index) => (
-              <li key={index} className="border p-4 rounded shadow">
-                <p><strong>{item.role}</strong>:</p>
-                <ReactMarkdown>{item.content}</ReactMarkdown>
-                {item.image && (
-                  <img
-                    src={item.image}
-                    alt="Uploaded"
-                    className="mt-2 w-full max-w-xs rounded"
-                  />
-                )}
-              </li>
-            ))}
-          </ul>
-        )}
+        {message && <p className="mt-4 text-green-600">{message}</p>}
+
+        <div className="mt-8">
+          <h2 className="text-xl font-semibold mb-2">📜 Conversation History</h2>
+          {history.length === 0 ? (
+            <p className="text-gray-500">No history yet.</p>
+          ) : (
+            <ul className="space-y-4">
+              {history.map((item, index) => (
+                <li key={index} className="border p-4 rounded shadow">
+                  <p><strong>{item.role}</strong>:</p>
+                  <ReactMarkdown>{item.content}</ReactMarkdown>
+                  {item.image && (
+                    <img
+                      src={item.image}
+                      alt="Uploaded"
+                      className="mt-2 w-full max-w-xs rounded"
+                    />
+                  )}
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
       </div>
-    </div>
 
-    </div>  
+    </div>
   );
 }
