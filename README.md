@@ -69,8 +69,10 @@ https://github.com/samanvayavats/aifitnessbuddy.git
 cd aifitnessbuddy
 
 
+
 ### 2. Install dependencies
 npm install
+
 
 
 ###3. setup .env 
