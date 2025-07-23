@@ -1,37 +1,86 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🏋️‍♂️ AI Fitness Buddy
 
-## Getting Started
+AI Fitness Buddy is a personalized fitness assistant web app built with **Next.js (App Router)**, **Tailwind CSS**, and **NextAuth.js**. It uses **DeepSeek AI** to generate dynamic workout and diet plans based on user input and feedback.
 
-First, run the development server:
+---
 
+## 🚀 Tech Stack
+
+- **Frontend**: Next.js (App Router) + Tailwind CSS
+- **Backend**: API Routes in Next.js
+- **Authentication**: NextAuth.js
+- **Database**: MongoDB (via Mongoose)
+- **AI Integration**: DeepSeek API (via OpenRouter or direct)
+- **Cloudinary**: For image uploads (optional)
+
+---
+
+## 📂 Folder Structure Overview
+
+/app
+/login → Auth UI
+/contact → Contact page
+/aifitnessbuddy → Main fitness dashboard
+/users → User management
+/components
+/layout → Navbar, Footer
+sessionWrapper.js → Auth provider wrapper
+/lib
+cloudinary.js → Image upload helper
+dbconnect.js → MongoDB connection
+/models
+user.model.js → User schema
+contact.model.js → Contact schema
+
+
+---
+
+## 🔐 Authentication
+
+- Using **NextAuth.js**
+- Supports credential login (extendable to OAuth like Google)
+---
+
+## 🤖 AI Plan Generation
+
+- Uses **DeepSeek AI** (via OpenRouter or API key)
+- API calls made from `/api/plan/generate`
+- Input: user profile + feedback
+- Output: dynamic workout and diet plan
+- Prompt-based interaction like:
+  > *“Generate a 1-day diet and workout plan for a 22-year-old male weighing 70kg, goal: fat loss.”*
+
+---
+
+## 🧪 Features
+
+- [x] User registration and login
+- [x] AI-generated workout & diet plans
+- [ ] Save and view history (coming soon)
+
+
+---
+
+## 🛠️ Getting Started
+
+### 1. Clone the repo
 ```bash
+git clone https://github.com/samanvayavats/aifitnessbuddy.git
+cd aifitnessbuddy
+
+npm install
+
+.env 
+DB_STRING = 
+API_KEY_FOR_AI_REQUEST = 
+CLOUDINARY_CLOUD_NAME = 
+CLOUDINARY_API_KEY =
+CLOUDINARY_API_SECRET =
+GOOGLE_CLIENT_ID =
+GOOGLE_CLIENT_SECRET =
+NEXTAUTH_URL=
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# aifitnessbuddy
+👨‍💻 Author
+Made with ❤️ by Samanvaya Vats
