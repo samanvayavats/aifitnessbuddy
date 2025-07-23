@@ -61,7 +61,7 @@ contact.model.js → Contact schema
 
 ---
 
-🛠️ Getting Started
+##🛠️ Getting Started
 
  1. Clone the repo
 
