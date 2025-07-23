@@ -10,8 +10,8 @@ AI Fitness Buddy is a personalized fitness assistant web app built with **Next.j
 - **Backend**: API Routes in Next.js
 - **Authentication**: NextAuth.js
 - **Database**: MongoDB (via Mongoose)
-- **AI Integration**: DeepSeek API (via OpenRouter or direct)
-- **Cloudinary**: For image uploads (optional)
+- **AI Integration**: DeepSeek API (via OpenRouter )
+- **Cloudinary**: For image uploads 
 
 ---
 
@@ -56,7 +56,7 @@ contact.model.js → Contact schema
 
 - [x] User registration and login
 - [x] AI-generated workout & diet plans
-- [ ] Save and view history (coming soon)
+- [X] Save and view history (coming soon)
 
 
 ---
@@ -65,7 +65,7 @@ contact.model.js → Contact schema
 
 ### 1. Clone the repo
 ```bash
-git clone https://github.com/samanvayavats/aifitnessbuddy.git
+https://github.com/samanvayavats/aifitnessbuddy.git
 cd aifitnessbuddy
 
 npm install
