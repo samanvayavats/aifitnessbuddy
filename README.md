@@ -63,8 +63,8 @@ contact.model.js → Contact schema
 
 ##🛠️ Getting Started
 
-### 1. Clone the repo
 ```bash
+### 1. Clone the repo
 https://github.com/samanvayavats/aifitnessbuddy.git
 cd aifitnessbuddy
 
