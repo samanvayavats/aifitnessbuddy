@@ -63,19 +63,21 @@ contact.model.js → Contact schema
 
 ##🛠️ Getting Started
 
- 1. Clone the repo
-
+### 1. Clone the repo
+```bash
 https://github.com/samanvayavats/aifitnessbuddy.git
 cd aifitnessbuddy
 
 
 
 ### 2. Install dependencies
+```bash
 npm install
 
 
 
 ###3. setup .env 
+```bash
 DB_STRING = 
 API_KEY_FOR_AI_REQUEST = 
 CLOUDINARY_CLOUD_NAME = 
@@ -87,6 +89,7 @@ NEXTAUTH_URL=
 
 
 ###4 .Run the development server
+```bash
 npm run dev
 
 
