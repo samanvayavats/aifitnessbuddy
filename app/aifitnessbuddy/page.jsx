@@ -49,6 +49,7 @@ export default function Page() {
     } finally {
       setIsUpload(false);
       setInput('');
+      setFile(null)
     }
   };
 
@@ -97,7 +98,7 @@ export default function Page() {
             required
           />
 
-          <div className=' flex '>
+          {/* <div className=' flex '>
             <input
               type="file"
               onChange={(e) => setFile(e.target.files[0])}
@@ -113,7 +114,7 @@ export default function Page() {
             <img src={URL.createObjectURL(file)}
               className='h-20 w-20'
               alt="No image to show" />
-          }
+          } */}
 
           <button
             disabled={isUpload}
